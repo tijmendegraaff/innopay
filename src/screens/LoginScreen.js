@@ -14,7 +14,7 @@ class LoginScreen extends Component {
         console.log('hello world')
         return (
             <Container>
-                <LoginForm />
+                <LoginForm navigation={this.props.navigation} />
             </Container>
         )
     }
