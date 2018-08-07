@@ -13,6 +13,7 @@ class LoginForm extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <View>
                 <Text>
@@ -41,6 +42,13 @@ password
                     <View>
                         <Text>
 Submit
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
+                    <View>
+                        <Text>
+Register
                         </Text>
                     </View>
                 </TouchableOpacity>
