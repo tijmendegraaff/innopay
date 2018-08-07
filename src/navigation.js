@@ -1,10 +1,13 @@
 import React from 'react'
-import { createStackNavigator } from 'react-navigation'
-
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
+// Auth Screens
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
+// Main navigationScreens
+import HomeScreen from './screens/HomeScreen'
+import SettingsScreen from './screens/SettingsScreen'
 
-export default createStackNavigator(
+const AuthRoutes = createStackNavigator(
     {
         Login: LoginScreen,
         Register: RegisterScreen,
@@ -13,8 +16,24 @@ export default createStackNavigator(
         headerMode: 'none',
         navigationOptions: {
             headerVisible: false,
+            gesturesEnabled: false,
         },
+        initialRouteName: 'Login',
     },
 )
 
-// export default Mainnav
+const AppRoutes = createBottomTabNavigator({
+    Home: HomeScreen,
+    Settings: SettingsScreen,
+})
+
+const user = true
+
+const MainNav = () => {
+    if (!user) {
+        return <AuthRoutes />
+    }
+    return <AppRoutes />
+}
+
+export default MainNav
